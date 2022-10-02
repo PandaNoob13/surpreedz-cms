@@ -1,10 +1,16 @@
 import './App.css';
-import VerificationPage from './features/Verificator/VerificationPage';
+// import Datatable from './features/Datatable/Datatable';
+// import VerificationPage from './features/Verificator/VerificationPage';
+import AppRouter from './navigation/AppRouter';
+// import NavBarDashboard from './navigation/Navbar/NavBarDashboard';
 
 function App() {
   return (
     <div className="App">
-      <VerificationPage />
+      {/* <VerificationPage /> */}
+      {/* <NavBarDashboard /> */}
+      {/* <Datatable /> */}
+      {/* <AppRouter/> */}
     </div>
   );
 }
