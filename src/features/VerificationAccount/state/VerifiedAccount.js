@@ -1,0 +1,53 @@
+import React, { useEffect } from 'react'
+import useVerificationAccount from '../useVerificationAccount'
+
+const VerifiedAccount = () => {
+    const {onGetVerifiedAccount,verifiedAccount} = useVerificationAccount();
+
+    useEffect(()=>{
+        onGetVerifiedAccount();
+    },[])
+
+  return (
+    <div className='text-white min-vh-100' style={{backgroundColor: "#212121", paddingTop: "3.5rem"}}>
+       
+    <div className="container p-3">
+        <div className="col-md-12 text-white " style={{paddingTop: "1.5rem"}}>
+            <h3>Unverified Account List</h3>
+            {/* <p>Manage your verification requested service</p> */}
+        </div>
+        <div className="col-md-12">
+            
+            <br/>
+        </div>
+        <table className="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Account Name</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Photo URL</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                { verifiedAccount? 
+                    verifiedAccount.map((dt, index) => {
+                        return (
+                            <tr key={dt.id}>
+                                <th scope="row">{index + 1}</th>
+                                <td>{dt.AccountDetail.name}</td>
+                                <td>{dt.AccountDetail.location}</td>
+                                <td>{dt.AccountDetail.PhotoProfiles[0].photo_link}</td>
+                            </tr>
+                        )
+                    }) : <></>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+  )
+}
+
+export default VerifiedAccount

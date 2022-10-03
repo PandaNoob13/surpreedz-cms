@@ -7,6 +7,9 @@ import ListAccount from '../features/Account/ListAccount';
 import ListOrder from '../features/OrderData/ListOrder'
 import { useAuth } from '../shared/UseAuth';
 import VerificationAccountPage from '../features/VerificationAccount/VerificationAccountPage';
+import RequestVerification from '../features/VerificationAccount/state/RequestVerification';
+import VerifiedAccount from '../features/VerificationAccount/state/VerifiedAccount';
+import UnVerifiedAccount from '../features/VerificationAccount/state/UnVerifiedAccount';
 
 const AppRouter = () => {
   const {token} = useAuth();
@@ -16,9 +19,9 @@ const AppRouter = () => {
       <Routes>
             <Route index element={<SignInView />}></Route>
             <Route element={<ProtectedPage />}>
-                <Route path='/verification-account' element={<VerificationAccountPage />}></Route>
-                <Route path='/list-account' element={<ListAccount />}></Route>
-                <Route path='/list-order-transaction' element={<ListOrder />}></Route>
+                <Route path='/request-verification' element={<RequestVerification />}></Route>
+                <Route path='/list-verified-account' element={<VerifiedAccount />}></Route>
+                <Route path='/list-unverified-account' element={<UnVerifiedAccount />}></Route>
             </Route>
       </Routes>
     </>

@@ -3,42 +3,25 @@ import {faCheck} from "@fortawesome/free-solid-svg-icons";
 import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
-import MenuCRUD from "./menu_crud";
+
+import useVerificationAccount from "../VerificationAccount/useVerificationAccount";
 // import { LinkContainer } from "react-router-bootstrap";
 
 
-export default function VerificationPage () {
-    const { showAll, deleteMenu } = MenuCRUD();
-    const [currentMenus, setCurrentMenus] = useState([])
+export default function VerificationPage (props) {
+    const {onUpdateVerifStatusAccount} = useVerificationAccount();
 
-    const onGetMenu = async () => {
-        // this.props.onShowLoading(true);
-        try {
-            const response = await showAll();
-            // this.props.onShowLoading(false);
-            setCurrentMenus(
-                [...response]
-            )
-        } catch (e) {
-            // this.props.onShowError(e.message);
-        }
-    }
-
-    useEffect(() => {
-        onGetMenu()
+    useEffect(()=> {
+        console.log('currentData', props.currentData);
+        console.log('type currentData', typeof props.currentData);
     })
 
-    const handleDelete = async (id) => {
-        const result = window.confirm('Are you sure want to delete ?');
-        // this.props.onShowLoading(true);
-        if (result) {
-            try {
-                await deleteMenu(id);
-                // this.props.onShowLoading(false);
-                await onGetMenu()
-            } catch (error) {
-                // this.props.onShowError(false);
-            }
+
+    const handleAction = async (id,verifStatus,verifRequest) => {
+        try {
+            await onUpdateVerifStatusAccount(id,verifStatus,verifRequest)
+        } catch (error) {
+            console.log('error', error);
         }
     }
 
@@ -62,7 +45,7 @@ export default function VerificationPage () {
                     {/* <div className="hr"></div> */}
                     <br/>
                 </div>
-                <table class="table table-dark table-striped">
+                <table className="table table-dark table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -72,20 +55,20 @@ export default function VerificationPage () {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            currentMenus.map((menu, index) => {
+                        { props.currentData.length > 0 ? 
+                            props.currentData.map((dt, index) => {
                                 return (
-                                    <tr key={menu.menuId}>
+                                    <tr key={dt.id}>
                                         <th scope="row">{index + 1}</th>
-                                        <td>{menu.menuName}</td>
-                                        <td>{menu.menuPrice.toLocaleString()}</td>
+                                        <td>{dt.AccountDetail.name}</td>
+                                        <td>{dt.PhotoProfiles.photo_link}</td>
                                         <td style={{textAlign: "center"}}>
                                             <div className="d-flex justify-content-center gap-3">
-                                                <Button size="sm" variant="success" onClick={() => handleDelete(menu.menuId)}>
+                                                <Button size="sm" variant="success" onClick={() => handleAction(dt.id,true,'accepted')}>
                                                     <FontAwesomeIcon icon={faCheck}/>
                                                     <span className="p-2">Accept</span>
                                                 </Button>
-                                                <Button size="sm" variant="danger" onClick={() => handleDelete(menu.menuId)}>
+                                                <Button size="sm" variant="danger" onClick={() => handleAction(dt.id,false,'rejected')}>
                                                     <FontAwesomeIcon icon={faXmark}/>
                                                     <span className="p-2">Reject</span>
                                                 </Button>
@@ -93,7 +76,7 @@ export default function VerificationPage () {
                                         </td>
                                     </tr>
                                 )
-                            })
+                            }) : <></>
                         }
                     </tbody>
                 </table>
