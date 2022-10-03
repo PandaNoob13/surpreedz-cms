@@ -1,8 +1,9 @@
 import { Navigate, Outlet } from "react-router-dom";
+import { useAuth } from "../shared/UseAuth";
 
 const ProtectedPage = () => {
-  const auth = localStorage.getItem('userCred')
-  return auth ? <Outlet/> : <Navigate to='/sign-in' replace/>
+  const {token} = useAuth();
+  return token ? <Outlet/> : <Navigate to='/' replace/>
 }
 
 export default ProtectedPage;

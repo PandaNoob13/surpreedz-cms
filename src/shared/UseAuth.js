@@ -23,7 +23,7 @@ export const AuthProvider = ({children}) => {
     const onLogout = () => {
         window.sessionStorage.clear();
         setToken(null)
-        navigate('/sign-in', {replace: true})
+        navigate('/', {replace: true})
     }
     return (
         <AuthContext.Provider value={{token, onLogin, onLogout}}>
