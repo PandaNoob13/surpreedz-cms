@@ -1,4 +1,3 @@
-import { NavLink, useNavigate } from "react-router-dom";
 import "./navbar.css";
 // import logo from "./SurpreedzLogo.png"
 

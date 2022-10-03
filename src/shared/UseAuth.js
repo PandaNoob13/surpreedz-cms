@@ -12,7 +12,7 @@ export const AuthProvider = ({children}) => {
             console.log(token);
             window.sessionStorage.setItem('token', token.AccessToken);
             setToken(token.AccessToken);
-            navigate('/', {replace: true})
+            navigate('/verification-account', {replace: true})
         } else {
             console.log(token.AccessToken);
             console.log('Token is null');
