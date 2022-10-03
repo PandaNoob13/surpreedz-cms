@@ -1,12 +1,19 @@
-import './App.css';
-import VerificationPage from './features/Verificator/VerificationPage';
+import AppRouter from './navigation/AppRouter';
+import { AuthProvider } from './shared/UseAuth';
+import Datatable from './features/Datatable/Datatable';
 
 function App() {
   return (
-    <div className="App">
-      <VerificationPage />
-    </div>
-  );
+    <>
+    <AuthProvider>
+        <AppRouter />
+        {/* <Datatable /> */}
+   </AuthProvider>
+    </>
+   
+   
+    
+  )
 }
 
 export default App;
