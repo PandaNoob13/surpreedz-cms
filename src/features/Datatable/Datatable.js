@@ -33,6 +33,7 @@ const columns = [
         field: 'accountName', 
         headerName: 'Account name', 
         flex: 0.8,
+        minWidth: 150,
         headerAlign: 'center',
     },
     {
@@ -40,10 +41,8 @@ const columns = [
         headerName: 'Photo URL',
         sortable: false,
         flex: 0.8,
+        minWidth: 250,
         headerAlign: 'center',
-        //   width: 160,
-        //   valueGetter: (params) =>
-        //     `${params.ro || ''}`,
     },
     {
         field: 'verificationButtons',
@@ -52,7 +51,7 @@ const columns = [
         flex: 1,
         headerAlign: 'center',
         align: 'center',
-        minWidth: 160,
+        minWidth: 250,
         renderCell: () => <VerificationButtons />
     },
   ];
