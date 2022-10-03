@@ -17,7 +17,7 @@ const useSignIn = () => {
         console.log(password);
         try {
             const response = await signInService.postLogin({
-                username: username,
+                email: username,
                 password: password
             })
             console.log('response token', response.token);

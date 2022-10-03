@@ -37,6 +37,8 @@ const columns = [
   
 
 const Datatable = () => {
+
+
   return (
     <div style={{ height: 400, width: '100%' }}>
       <DataGrid
