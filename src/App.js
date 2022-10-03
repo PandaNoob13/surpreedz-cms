@@ -6,7 +6,6 @@ function App() {
     <>
     <AuthProvider>
         <AppRouter />
-        {/* <Datatable /> */}
    </AuthProvider>
     </>
    

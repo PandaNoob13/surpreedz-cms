@@ -4,19 +4,49 @@ import {faXmark} from "@fortawesome/free-solid-svg-icons";
 import { useEffect, useState } from "react";
 import { Button, Container } from "react-bootstrap";
 import useVerificationAccount from '../useVerificationAccount'
+import { useNavigate } from "react-router-dom";
+import swal from "sweetalert";
 
 const RequestVerification = () => {
     const {onGetRequestVirefication,requestVerif,onUpdateVerifStatusAccount} = useVerificationAccount();
+    const navigate = useNavigate();
+    const [trigger,setTrigger] = useState(false)
 
     useEffect(() =>{
 
       onGetRequestVirefication();
       console.log('RequestVerification => ', requestVerif);
-    },[])
+    },[trigger])
 
     const handleAction = async (id,verifStatus,verifRequest) => {
       try {
           await onUpdateVerifStatusAccount(id,verifStatus,verifRequest)
+          setTrigger(!trigger);
+
+          if (verifStatus) {
+            swal({
+                title:'Update Verification Account Success',
+                text:'Check the list of verified accounts!',
+                icon:'success',
+                buttons:["No", "Yes"]
+            }).then((value)=> {
+                if (value) {
+                    navigate('/list-verified-account')
+                }
+            })
+            }else if(verifStatus === false){
+                swal({
+                    title:'Update Verification Account Success',
+                    text:'Check the list of unverified accounts !',
+                    icon:'success',
+                    buttons:["No", "Yes"]
+                }).then((value)=> {
+                    if (value) {
+                        navigate('/list-unverified-account')
+                    }  
+                })
+         }
+          
       } catch (error) {
           console.log('error', error);
       }
