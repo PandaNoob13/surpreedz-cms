@@ -12,14 +12,15 @@ const AppRouter = () => {
   const {token} = useAuth();
   return (
     <>
-    {token ? <NavBarDashboard></NavBarDashboard> : <></>}
+    {/* {token ? <NavBarDashboard></NavBarDashboard> : <></>} */}
+    <NavBarDashboard/>
       <Routes>
-            <Route index element={<SignInView />}></Route>
-            <Route element={<ProtectedPage />}>
+            {/* <Route index element={<SignInView />}></Route> */}
+            {/* <Route element={<ProtectedPage />}> */}
                 <Route path='/verification-account' element={<VerificationAccountPage />}></Route>
                 <Route path='/list-account' element={<ListAccount />}></Route>
                 <Route path='/list-order-transaction' element={<ListOrder />}></Route>
-            </Route>
+            {/* </Route> */}
       </Routes>
     </>
   )

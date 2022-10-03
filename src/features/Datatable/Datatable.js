@@ -1,53 +1,101 @@
 import * as React from 'react';
 import { DataGrid } from '@mui/x-data-grid';
+import { createTheme, ThemeProvider } from '@mui/material';
+import { Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {faCheck} from "@fortawesome/free-solid-svg-icons";
+import {faXmark} from "@fortawesome/free-solid-svg-icons";
 
+const VerificationButtons = () => {
+    return (
+        <div className="d-flex justify-content-center gap-3">
+            <Button size="sm" variant="success" onClick={() => console.log('accept')}>
+                <FontAwesomeIcon icon={faCheck}/>
+                <span className="p-2">Accept</span>
+            </Button>
+            <Button size="sm" variant="danger" onClick={() => console.log('reject')}>
+                <FontAwesomeIcon icon={faXmark}/>
+                <span className="p-2">Reject</span>
+            </Button>
+        </div>
+    )
+}
 
 const columns = [
-    { field: 'id', headerName: 'ID', width: 70 },
-    { field: 'firstName', headerName: 'First name', width: 130 },
-    { field: 'lastName', headerName: 'Last name', width: 130 },
-    {
-      field: 'age',
-      headerName: 'Age',
-      type: 'number',
-      width: 90,
+    { 
+        field: 'id', 
+        headerName: 'ID', 
+        width: 70,
+        headerAlign: 'center',
+        align: 'center',
+    },
+    { 
+        field: 'accountName', 
+        headerName: 'Account name', 
+        flex: 0.8,
+        headerAlign: 'center',
     },
     {
-      field: 'fullName',
-      headerName: 'Full name',
-      description: 'This column has a value getter and is not sortable.',
-      sortable: false,
-      width: 160,
-      valueGetter: (params) =>
-        `${params.row.firstName || ''} ${params.row.lastName || ''}`,
+        field: 'photoUrl',
+        headerName: 'Photo URL',
+        sortable: false,
+        flex: 0.8,
+        headerAlign: 'center',
+        //   width: 160,
+        //   valueGetter: (params) =>
+        //     `${params.ro || ''}`,
+    },
+    {
+        field: 'verificationButtons',
+        headerName: '',
+        sortable: false,
+        flex: 1,
+        headerAlign: 'center',
+        align: 'center',
+        minWidth: 160,
+        renderCell: () => <VerificationButtons />
     },
   ];
   
   const rows = [
-    { id: 1, lastName: 'Snow', firstName: 'Jon', age: 35 },
-    { id: 2, lastName: 'Lannister', firstName: 'Cersei', age: 42 },
-    { id: 3, lastName: 'Lannister', firstName: 'Jaime', age: 45 },
-    { id: 4, lastName: 'Stark', firstName: 'Arya', age: 16 },
-    { id: 5, lastName: 'Targaryen', firstName: 'Daenerys', age: null },
-    { id: 6, lastName: 'Melisandre', firstName: null, age: 150 },
-    { id: 7, lastName: 'Clifford', firstName: 'Ferrara', age: 44 },
-    { id: 8, lastName: 'Frances', firstName: 'Rossini', age: 36 },
-    { id: 9, lastName: 'Roxie', firstName: 'Harvey', age: 65 },
+    { id: 1, accountName: 'Snow' },
+    { id: 2, accountName: 'Lannister' },
+    { id: 3, accountName: 'Lannister' },
+    { id: 4, accountName: 'Stark' },
+    { id: 5, accountName: 'Targaryen' },
+    { id: 6, accountName: 'Melisandre' },
+    { id: 7, accountName: 'Clifford' },
+    { id: 8, accountName: 'Frances' },
+    { id: 9, accountName: 'Roxie' },
   ];
   
 
 const Datatable = () => {
-  return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        rows={rows}
-        columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
-        checkboxSelection
-      />
-    </div>
-  )
+    return (
+        <div className='container' style={{height:'600px', width:'100%'}}>
+            <div style={{ display: 'flex', height: '100%' }}>
+                <div style={{ flexGrow: 1 }}>
+                    <ThemeProvider theme={darkTheme}>
+                        <DataGrid
+                            rows={rows}
+                            columns={columns}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                            // checkboxSelection
+                            // sx={{color: 'white'}}
+                        />
+                    </ThemeProvider>
+                </div>
+            </div>
+        </div>
+    )
 }
+
+const darkTheme = createTheme({
+    palette: {
+      mode: 'dark',
+    },
+  });
+  
 
 export default Datatable
