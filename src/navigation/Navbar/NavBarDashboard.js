@@ -1,7 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useAuth } from "../../shared/UseAuth";
 import "./navbar.css";
-// import logo from "./SurpreedzLogo.png"
 
 const NavBarDashboard = () => {
     const {onLogout} = useAuth();

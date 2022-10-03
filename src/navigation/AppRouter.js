@@ -3,10 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 import SignInView from '../features/SignIn/SignInView';
 import NavBarDashboard from './Navbar/NavBarDashboard';
 import ProtectedPage from './ProtectedPage';
-import ListAccount from '../features/Account/ListAccount';
-import ListOrder from '../features/OrderData/ListOrder'
 import { useAuth } from '../shared/UseAuth';
-import VerificationAccountPage from '../features/VerificationAccount/VerificationAccountPage';
 import RequestVerification from '../features/VerificationAccount/state/RequestVerification';
 import VerifiedAccount from '../features/VerificationAccount/state/VerifiedAccount';
 import UnVerifiedAccount from '../features/VerificationAccount/state/UnVerifiedAccount';
