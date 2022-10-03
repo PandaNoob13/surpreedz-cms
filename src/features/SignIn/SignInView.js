@@ -4,73 +4,74 @@ import useSignIn from "./useSignIn";
 
 
 const SignInView = () => {
-  const navigate = useNavigate();
-    const {onPostSignIn} = useSignIn();
-    const [email, setEmail] = useState('')
-    const [password, setPassword] = useState('')
-    const [emailErrorMessage, setEmailErrorMessage] = useState('')
-    const [passwordErrorMessage, setPasswordErrorMessage] = useState('')
-    const [buttonDisabled, setButtonDisabled] = useState(true)
+  // const navigate = useNavigate();
+  //   const {onPostSignIn} = useSignIn();
+  //   const [email, setEmail] = useState('')
+  //   const [password, setPassword] = useState('')
+  //   const [emailErrorMessage, setEmailErrorMessage] = useState('')
+  //   const [passwordErrorMessage, setPasswordErrorMessage] = useState('')
+  //   const [buttonDisabled, setButtonDisabled] = useState(true)
 
-    const handleEmailChange = async (event) => {
-        setEmail(event.target.value)
-    }
+  //   const handleEmailChange = async (event) => {
+  //       setEmail(event.target.value)
+  //   }
 
-    const validateEmailInput = async () => {
-        let emailErrorMessage = ''
-        if (!email.match(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/)){
-            if (email === 0 || email === '') {
-                emailErrorMessage = `Email can't be empty!`
-            } else {
-                emailErrorMessage = 'Invalid email format'
-            }
-        }
-        setEmailErrorMessage(emailErrorMessage)
-    }
+  //   const validateEmailInput = async () => {
+  //       let emailErrorMessage = ''
+  //       if (!email.match(/^[a-zA-Z0-9]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/)){
+  //           if (email === 0 || email === '') {
+  //               emailErrorMessage = `Email can't be empty!`
+  //           } else {
+  //               emailErrorMessage = 'Invalid email format'
+  //           }
+  //       }
+  //       setEmailErrorMessage(emailErrorMessage)
+  //   }
 
-    useEffect(() => {
-        validateEmailInput()
-    }, [email])
+  //   useEffect(() => {
+  //       validateEmailInput()
+  //   }, [email])
 
-    const handlePasswordChange = async (event) => {
-        setPassword(event.target.value)
-    }
+  //   const handlePasswordChange = async (event) => {
+  //       setPassword(event.target.value)
+  //   }
 
-    const validatePasswordInput = async () => {
-        let minPasswordLength = 6
-        let passwordErrorMessage = ''
-        if (password.length < minPasswordLength){
-            passwordErrorMessage = `${minPasswordLength} min length character`
-        }
-        setPasswordErrorMessage(passwordErrorMessage)
-    }
-    useEffect(()=>{
-        validatePasswordInput()
-    }, [password])
+  //   const validatePasswordInput = async () => {
+  //       let minPasswordLength = 6
+  //       let passwordErrorMessage = ''
+  //       if (password.length < minPasswordLength){
+  //           passwordErrorMessage = `${minPasswordLength} min length character`
+  //       }
+  //       setPasswordErrorMessage(passwordErrorMessage)
+  //   }
+  //   useEffect(()=>{
+  //       validatePasswordInput()
+  //   }, [password])
 
-    const handleSubmit = async (event) => {
-        event.preventDefault(); // Supaya ga render ulang
-        onPostSignIn(email, password)
-    }
+  //   const handleSubmit = async (event) => {
+  //       event.preventDefault(); // Supaya ga render ulang
+  //       onPostSignIn(email, password)
+  //   }
 
-    useEffect(() => {
-        checkInputState()
-    }, [emailErrorMessage])
+  //   useEffect(() => {
+  //       checkInputState()
+  //   }, [emailErrorMessage])
 
    
-    useEffect(() => {
-        checkInputState()
-    }, [passwordErrorMessage])
-    const checkInputState = async () => {
-        if (emailErrorMessage === '' && passwordErrorMessage === ''){
-            setButtonDisabled(false)
-        } else {
-            setButtonDisabled(true)
-        }
-    }
+  //   useEffect(() => {
+  //       checkInputState()
+  //   }, [passwordErrorMessage])
+  //   const checkInputState = async () => {
+  //       if (emailErrorMessage === '' && passwordErrorMessage === ''){
+  //           setButtonDisabled(false)
+  //       } else {
+  //           setButtonDisabled(true)
+  //       }
+  //   }
   return (
     <div className="bg-request-page">
-          <div className="container d-flex flex-column min-vh-100 py-auto">
+      SIGN IN
+          {/* <div className="container d-flex flex-column min-vh-100 py-auto">
                   <div className="row my-auto">
                       <div className="col-md-8 my-auto px-2 py-4">
                       <div className="welcometext m-2">Welcome Back !</div>
@@ -122,7 +123,7 @@ const SignInView = () => {
 
                   </div>
               </div>
-          </div>
+          </div> */}
     </div>
   )
 }

@@ -12,7 +12,7 @@ import ServiceFactory from './services/ServiceFactory';
 import { DepProvider } from './shared/DepContext';
 
 const apiClient = ApiClientFactory(clientInstance);
-const services = ServiceFactory(apiClient)
+const services = ServiceFactory(apiClient);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
