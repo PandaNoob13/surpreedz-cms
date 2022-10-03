@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useSignIn from "./useSignIn";
+import './signInView.css';
 
 
 const SignInView = () => {
@@ -70,9 +71,13 @@ const SignInView = () => {
     <div className="bg-request-page">
           <div className="container d-flex flex-column min-vh-100 py-auto">
                   <div className="row my-auto">
-                      
-                  <div  className="col-lg-4 card bg-card align-self-center align-items-center">
-                      <form onSubmit={handleSubmit} className="col-md-10 d-flex pt-5 flex-column justify-content-center align-items-center text-center ">
+                    <div className="col-md-8 my-auto px-2 py-4">
+                        <div className="welcometext m-2">Surpreedz CMS</div>
+                        <div className="col-md-6 hr m-2"></div>
+                        <div className="liberate m-2">Management System for Admin</div>
+                    </div>
+                  <div  className="col-lg-4 card bg-card  align-items-center">
+                      <form onSubmit={handleSubmit} className="col-md-10 d-flex pt-5 pb-5 flex-column justify-content-center align-items-center text-center ">
                           <input className="form-control p-3 m-2"
                           placeholder="Username/email"
                           type="email"

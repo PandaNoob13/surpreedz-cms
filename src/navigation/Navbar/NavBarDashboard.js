@@ -20,10 +20,10 @@ const NavBarDashboard = () => {
                         <button  className="btn btn-light m-1 mx-2">Request Verification</button>
                    </NavLink>
                    <NavLink to='/list-verified-account'>
-                        <button  className="btn btn-light m-1 mx-2">List Verified Account</button>
+                        <button  className="btn btn-light m-1 mx-2">Verified Account</button>
                    </NavLink>
                    <NavLink to='/list-unverified-account'>
-                        <button  className="btn btn-light m-1 mx-2">List UnVerified Account</button>
+                        <button  className="btn btn-light m-1 mx-2">Unverified Account</button>
                    </NavLink>
 
             </div>
